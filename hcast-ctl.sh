@@ -47,6 +47,7 @@ N_JTAKS_OCN=8
 
 NTASKS_ALL=`expr $NTASKS_ATM + $NTASKS_OCN`
 echo "TOTAL CPUS:"$NTASKS_ALL
+echo $WRF_PATH 
 
 # Set up paras derivatives 
 STRT_DATE=${STRT_DATE_FULL:0:10}
