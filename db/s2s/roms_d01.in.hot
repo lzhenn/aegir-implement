@@ -249,7 +249,7 @@ DT_placeholder
 
 ! Input/Output parameters.
 
-       NRREC == 0    0
+       NRREC == -1    0
    LcycleRST == T    T
         NRST == 2880  120
         NSTA == 1    1
@@ -974,7 +974,7 @@ Dout(iTvdif) == F F     ! temp_vdiff, ...    vertical diffusion
 
      GRDNAME == Projects/Aegir/roms_swan_grid/roms_d01_lp0d1.nc 
 !                Projects/Njord/roms_swan_grid/roms_d02_lp0.08.nc
-     ININAME == Projects/Aegir/ow_icbc/d01/coawst_ini.nc 
+     ININAME ==  njord_rst_d01.nc 
 !                Projects/Njord/ow_icbc/d02/coawst_ini_d02.nc
      ITLNAME == ocean_itl.nc
      IRPNAME == ocean_irp.nc

@@ -11,6 +11,16 @@ ABS_PATH=${ABS_PATH%/*}
 echo $ABS_PATH
 cd $ABS_PATH 
 
+# Load-balancing Configurations for Processors Layer
+NTASKS_ATM=64
+
+NTASKS_OCN=32
+N_ITAKS_OCN=4
+N_JTAKS_OCN=8
+
+NTASKS_ALL=`expr $NTASKS_ATM + $NTASKS_OCN`
+echo "TOTAL CPUS:"$NTASKS_ALL
+
 
 # paras
 WRF_PATH=$1
@@ -23,6 +33,7 @@ RA_ROOT=$7
 ARCH_ROOT=$8
 ROMS_DT=$9
 WRF_RST=${10}
+OFFSET_DAY=${11}
 
 ## stream control flags
 TEST_FLAG=0
@@ -37,17 +48,6 @@ CPL_IN=coupling.in
 ### Set ROMS for generating ICBC for ocn
 AEGIR_PROJ_PATH=${AEGIR_ROOT}/Projects/Aegir/
 ARCH_ROOT=${ARCH_ROOT}/${CASE_NAME}/
-
-# Load-balancing Configurations for Processors Layer
-NTASKS_ATM=32
-
-NTASKS_OCN=64
-N_ITAKS_OCN=8
-N_JTAKS_OCN=8
-
-NTASKS_ALL=`expr $NTASKS_ATM + $NTASKS_OCN`
-echo "TOTAL CPUS:"$NTASKS_ALL
-echo $WRF_PATH 
 
 # Set up paras derivatives 
 STRT_DATE=${STRT_DATE_FULL:0:10}
@@ -82,9 +82,6 @@ if [ $INIT_RUN_FLAG == 1 ]; then
     
     rm -f ${AEGIR_ROOT}/wrfrst*
 else
-    # bug fix for roms restart time
-    echo $AEGIR_ROOT $STRT_DATE_FULL
-    python3 roms_time_bug_patch.py $AEGIR_ROOT $STRT_DATE_FULL
     cp ./db/${DOMAIN_GROUP}/roms_d01.in.hot $AEGIR_PROJ_PATH/roms_d01.in
 fi
 
@@ -92,7 +89,7 @@ fi
 cd ./pre_driver
 date
 sh wrf_hcast_driver.sh $STRT_DATE_PACK $END_DATE_PACK $WRF_RST $AEGIR_ROOT $INIT_HR
-sh roms_hcast_driver.sh $AEGIR_ROOT $RA_ROOT $STRT_DATE_FULL $ROMS_DT $CASE_NAME
+sh roms_hcast_driver.sh $AEGIR_ROOT $RA_ROOT $STRT_DATE_FULL $ROMS_DT $CASE_NAME $INIT_RUN_FLAG ${OFFSET_DAY}
 date
 cd ..
 
@@ -122,7 +119,6 @@ fi
 date
 
 # Archive
-mv njord_rst_d01.nc njord_rst_d01.nc.org
 
 if [ ${ARCHIVE_FLAG} == 1 ]
 then
@@ -130,6 +126,7 @@ then
         mkdir ${ARCH_ROOT}
     fi
     mv wrfout* $ARCH_ROOT/
+    mv wrfxtrm* $ARCH_ROOT/
     mv njord_his_d01.nc $ARCH_ROOT/njord_his_d01.${STRT_DATE_PACK}.nc
 fi
 

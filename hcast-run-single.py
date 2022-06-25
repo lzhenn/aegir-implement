@@ -98,7 +98,10 @@ def main_run():
             args=args+cfg_hdl['WRF']['restart_run']+' '
         else:
             args=args+'1'+' '
-
+        # 11 OFFSET_DAY
+        #args=args+str(iday)+' '
+        args=args+'1 '
+    
         # run hcast-ctl.sh
         os.system('sh '+CWD+'/hcast-ctl.sh '+args)
         curr_ts=init_ts+datetime.timedelta(days=iday+1)
