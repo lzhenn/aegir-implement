@@ -113,6 +113,7 @@ mpirun -np ${NTASKS_ALL} ./coawstM ./Projects/Aegir/${CPL_IN} >& cwstv3.${STRT_D
 EOF
 
 echo ">>Run COAWST..."
+echo "INIT @"$STRT_DATE_FULL
 if [ ${TEST_FLAG} == 0 ]; then
     sh run.sh
 fi

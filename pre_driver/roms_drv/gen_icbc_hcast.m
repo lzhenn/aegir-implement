@@ -26,21 +26,21 @@ domain_str='d01';
 
 % (1) Enter start date (T1) and number of days to get climatology data 
 %T1 = datetime(2021,06,15,12,0,0);
-T1=datetime(2016,07,21,00,0,0);
+T1=datetime(2022,07,01,00,0,0);
 %number of days and frequency to create climatology files for
 %numdays = 3;
-numdays=16;
+numdays=36;
 dayFrequency = 1;
 
 % (2) Enter URL of the HYCOM catalog for the requested time, T1
 %     see http://tds.hycom.org/thredds/catalog.html
 %url = '/users/b145872/project-dir/data/hycom/goni/';
 %url = '/home/lzhenn/array74/Njord_Calypso//drv_field//hycom_subset/'; 
-ocn_ra= '/home/metctm1/array_hq133/data/drv_fld//hycom_subset/aegir_2016072100/';
+ocn_ra= '/home/metctm1/array_hq133/data/drv_fld//hycom_subset/aegir_2022070100/';
 
 % (3) Enter working directory (wdr)
 %wdr = ['/home/metctm1/array/app/COAWST/COAWST_operational/Projects/GBA_operational/ow_icbc/', domain_str];
-wdr = '/home/metctm1/array_hq133/data/drv_fld//icbc/aegir_2016072100/';
+wdr = '/home/metctm1/array_hq133/data/drv_fld//icbc/aegir_2022070100/';
 %roms_swan_grid_dir='/users/b145872/project-dir/app/COAWST-FULL/Projects/GONI/grid/';
 %roms_swan_grid_dir='/home/metctm1/array/app/COAWST/COAWST_operational/Projects/GBA_operational/roms_swan_grid/';
 roms_swan_grid_dir = '/disk/r127/metctm1/workspace/aegir-implement/domaindb/s2s/';

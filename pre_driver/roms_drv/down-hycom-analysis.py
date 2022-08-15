@@ -76,7 +76,7 @@ def main():
         curr_filetime=int_time_obj+datetime.timedelta(days=int(ifrm))
         # URL base str for forecast data
         url_base='https://ncss.hycom.org/thredds/ncss/'+exp_series+'0.08/'+exp_name
-        if curr_filetime>datetime.datetime(2014,7,1):
+        if curr_filetime>datetime.datetime(2016,4,18):
             url_base=url_base+'?'
             url_var_range='var=surf_el&var=salinity&var=water_temp&var=water_u&var=water_v'
         else:

@@ -54,6 +54,7 @@ def main_run():
         args=args+arg 
         # run utils/hycom_down_interp.sh 
         os.system('sh '+CWD+'/utils/hycom_down_interp_hcst.sh '+args)
+        print('Interp success, run model please delete exit()!!!!!!!!!!!!!')
     # ----------------WRF PREPROCESS---------------
     if cfg_hdl['WRF'].getboolean('run_wrf_driver'):
         cfg_smp=lib.cfgparser.read_cfg(CWD+'/wrf-top-driver/conf/config.sample.ini')
