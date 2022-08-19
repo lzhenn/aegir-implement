@@ -24,6 +24,7 @@ def merge_cfg(cfg_org, cfg_tgt):
     
     cfg_tgt['INPUT']['drv_type']=cfg_org['WRF']['drv_type']
     cfg_tgt['DOWNLOAD']['down_drv_data']=cfg_org['WRF']['down_drv_data']
+    cfg_tgt['DOWNLOAD']['area_nwse']=cfg_org['WRF']['area_nwse']
     cfg_tgt['CORE']['run_wps']=cfg_org['WRF']['run_wps']
     cfg_tgt['CORE']['run_real']=cfg_org['WRF']['run_real']
    
