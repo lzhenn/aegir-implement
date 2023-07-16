@@ -8,10 +8,13 @@ Control script pipeline for WRF-ROMS (Aegir) coupled run. This pipeline may be s
 
 1. Create new conda environment and install required packages:
 ```
-conda create --name test --file requirements.txt
+conda create -n aegir python=3.10
+conda activate aegir
+conda install xarray scipy 
+conda install -c conda-forge eccodes
+pip3 install eccodes cfgrib
 ```
-
-modify `AEGIR_ROOT` and `DOMDB_PATH` in `setup.py`. 
+2. modify `AEGIR_ROOT` and `DOMDB_PATH` in `setup.py`. 
 `AEGIR_ROOT` points to the directory where the executable `coawstM` exists. `DOMDB_PATH` points to ROMS domain/sample files.
 run `setup.py` to link domaindb folder to this working directory.
 ```bash
