@@ -48,3 +48,6 @@ def parse_fmt_timepath(tgt_time, fmtpath):
             parsed_path+=seg
     return parsed_path
 
+def form_args(*args):
+    '''form arglines in commandline format'''
+    return ' '.join(args)

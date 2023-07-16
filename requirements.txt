@@ -1,0 +1,8 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+cfgrib=0.9.10.4=pypi_0
+eccodes=1.6.0=pypi_0
+numpy=1.25.0=py310h5f9d8c6_0
+scipy=1.10.1=py310h5f9d8c6_1
+xarray=2023.6.0=py310h06a4308_0

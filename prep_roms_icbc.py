@@ -9,7 +9,7 @@ Nov 18, 2021 --- Initial
 Aug 9, 2022  --- Major revison for py-based interpolation
 Zhenning LI
 '''
-import sys, logging.config
+import sys, logging, logging.config
 from utils import utils
 import lib
 
@@ -27,7 +27,10 @@ def main_run():
     # build maker 
     utils.write_log('ROMS: Build Initial maker...')
     roms_maker=lib.roms_icbc_maker.ROMSMaker(cfg_hdl)
-    
+
+    # down raw data
+    roms_maker.down_rawdata()
+
     # build initial, clim, and bdy file 
     roms_maker.build_icbc()
     

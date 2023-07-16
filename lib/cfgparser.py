@@ -27,6 +27,7 @@ def merge_cfg(cfg_org, cfg_tgt):
     cfg_tgt['DOWNLOAD']['area_nwse']=cfg_org['WRF']['area_nwse']
     cfg_tgt['CORE']['run_wps']=cfg_org['WRF']['run_wps']
     cfg_tgt['CORE']['run_real']=cfg_org['WRF']['run_real']
+    cfg_tgt['CORE']['run_wrf']='False'
    
     cfg_tgt['INPUT']['raw_root']=cfg_org['WRF']['raw_root']
     cfg_tgt['INPUT']['wps_root']=cfg_org['WRF']['wps_root']

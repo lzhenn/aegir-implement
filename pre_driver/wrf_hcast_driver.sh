@@ -17,7 +17,7 @@ DD_NLS=${LID_NLS:6:2}
 DD_NLE=${LID_NLE:6:2}
 
 cd $NJORD_ROOT
-sed -i "/run_days/s/^.*$/ run_days                          = 1, /g" namelist.input
+sed -i "/run_hours/s/^.*$/ run_hours                          = 24, /g" namelist.input
 sed -i "/start_year/s/^.*$/ start_year                          = ${YYYY_NLS}, ${YYYY_NLS}, ${YYYY_NLS}, ${YYYY_NLS},/g" namelist.input
 sed -i "/end_year/s/^.*$/ end_year                            = ${YYYY_NLE}, ${YYYY_NLE}, ${YYYY_NLE}, ${YYYY_NLE},/g" namelist.input
 sed -i "/start_month/s/^.*$/ start_month                          = ${MM_NLS}, ${MM_NLS}, ${MM_NLS}, ${MM_NLS},/g" namelist.input

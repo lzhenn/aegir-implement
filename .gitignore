@@ -1,4 +1,8 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+Aegir
+domaindb
+*.log
+*.swp
 *.py[cod]
 *$py.class

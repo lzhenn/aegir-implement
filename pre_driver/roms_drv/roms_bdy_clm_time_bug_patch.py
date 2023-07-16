@@ -46,4 +46,20 @@ for var in timevar_lst_clm:
     #var_time.values[:]=var_time.values[:]+HALF_DAY
     d=d.assign_coords({var:var_time})
 
+# Get the 'lon_rho' variable
+lon_rho,lat_rho = dc['lon_rho'], dc['lat_rho']
+# Create a new variable with corrected attributes
+lon_rho_new = xr.Variable(lon_rho.dims, lon_rho.values, attrs={
+    'units': lon_rho.units,
+    'long_name': lon_rho.long_name,
+    '_FillValue': 100000.0,
+    'missing_value': 100000.0
+})
+lat_rho_new = xr.Variable(lat_rho.dims, lat_rho.values, attrs={
+    'units': lat_rho.units,
+    'long_name': lat_rho.long_name,
+    '_FillValue': 100000.0,
+    'missing_value': 100000.0
+})
+dc['lon_rho'],dc['lat_rho'] = lon_rho_new, lat_rho_new
 dc.to_netcdf(clm_file,'a')

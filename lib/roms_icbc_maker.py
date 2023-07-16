@@ -121,7 +121,13 @@ class ROMSMaker:
         # load domain file
         self.load_domain()
 
-       
+    def down_rawdata(self):
+        '''
+        download raw data 
+        '''
+        utils.write_log(print_prefix+'Down raw driving files...')
+        
+
     def load_domain(self):
         """ load domain file """
         utils.write_log(print_prefix+'Load domain file...')
@@ -223,10 +229,11 @@ class ROMSMaker:
                 'depth':ds_raw['depthBelowSea'],
                 'lon': ds_raw['longitude'], 
                 'lat': ds_raw['latitude']})
+            ds_raw=ds_raw.drop_indexes(
+                ['depthBelowSea','latitude','longitude'])
             ds_raw['pt'].values=ds_raw['pt'].values-K2C
             ds_raw['s'].values=ds_raw['s'].values*1000.0
         self.ds_raw=ds_raw
-    
     def varname_remap(self):
         """ remap variable names to roms standard """
         self.varmap={}
