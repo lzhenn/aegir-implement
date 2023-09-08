@@ -1,7 +1,7 @@
 # AEGIR Implement
 
 Control script pipeline for WRF-ROMS (Aegir) coupled run. This pipeline may be seperated into `preprocessing` and `implementing` sections. 
-`preprocessing` scetion aims at preprocessing driving data (e.g. CFS/HYCOM/ERA5) into initial and boundary conditions for ROMS and WRF.
+`preprocessing` scetion aims at preprocessing driving data (e.g. CFS/HYCOM/ERA5/cpsv3) into initial and boundary conditions for ROMS and WRF.
 `implementing` section controls the WRF+ROMS main model simulation stream.
 
 ## Setup
@@ -28,12 +28,23 @@ python3 hcast-run-single.py
 ```
 
 ## Debug Log
-- May 15, 2022: SCRIP: Using single process version. 
-- June 24, 2022: Using `xarray` to_netcdf with 'a' opt if the same obj used for 2 files will cause unexpected var value.
 - June 25, 2022: ROMS: Restart default output time is 12Z
+- June 24, 2022: Using `xarray` to_netcdf with 'a' opt if the same obj used for 2 files will cause unexpected var value.
+- May 15, 2022: SCRIP: Using single process version. 
+
+
+
+## Operational Call Stack
+- hcast-run-single.py
+    - read cfg: conf/config.fcst.ini
+    - prep_roms_icbc.py
+    - wrf-top-driver/serial_driver.py
+
+
 
 ## Scratch
-Install eccodes by:
+
+**Jul 2023**: Install eccodes by:
 ```bash
  conda install -c conda-forge eccodes
  pip3 install eccodes
